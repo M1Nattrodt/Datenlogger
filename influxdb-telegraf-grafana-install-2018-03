@@ -15,7 +15,7 @@ sudo apt update
 sudo systemctl enable influxdb
 sudo systemctl start influxdb
 
-#testen, beenden mit Exit
+# testen, beenden mit Exit
 influx
 CREATE USER "admin" WITH PASSWORD 'admin' WITH ALL PRIVILEGES
 CREATE USER "rasp4" WITH PASSWORD 'rasp4' WITH ALL PRIVILEGES
@@ -69,7 +69,7 @@ sleep 30 &&  /boot/bootlogger.py &
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 network={
        ssid="TestNetzwerk"    
-			 psk="Mein1SuperGeheimesPasswort!"
-			 }
+       psk="Mein1SuperGeheimesPasswort!"
+  }
 # sudo nano /etc/network/interfaces
 
