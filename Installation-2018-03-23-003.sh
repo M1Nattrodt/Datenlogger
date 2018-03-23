@@ -82,3 +82,5 @@ sudo nano /etc/rc.local
 	#set -x                         # tell sh to display commands before execution
 	sleep 30 &&  /boot/bootlogger.py &
 
+# nach dem Neustart sollte alles funktionieren
+sudo reboot
