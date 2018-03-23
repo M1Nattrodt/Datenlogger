@@ -13,7 +13,7 @@ echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/ap
 
 sudo apt update
 
-# telegraf wird installiert aber momentan nicht benötigt
+# telegraf wird installiert aber momentan nicht benÃ¶tigt
 sudo apt install influxdb telegraf
 
 sudo systemctl enable influxdb
@@ -28,26 +28,26 @@ CREATE USER "telegraf" WITH PASSWORD 'telegraf' WITH ALL PRIVILEGES
 CREATE DATABASE "telegraf"
 CREATE DATABASE "rasp4"
 
-# Statt admin könnt ihr auch einen anderen Benutzernamen
-# wählen und ihr solltet bei password ein sicheres Passwort vergeben.
+# Statt admin kÃ¶nnt ihr auch einen anderen Benutzernamen
+# wÃ¤hlen und ihr solltet bei password ein sicheres Passwort vergeben.
 # beenden mit Exit
 
 sudo nano /etc/influxdb/influxdb.conf
 
-# Hier müssen im Abschnitt [http] die folgende Zeilen überprüft
+# Hier mÃ¼ssen im Abschnitt [http] die folgende Zeilen Ã¼berprÃ¼ft
 # und gegebenenfalls muss die Raute # entfernt werden werden.
 
 enabled = true
-bind-address = „:8086“
+bind-address = â€ž:8086â€œ
 auth-enabled = false
 # evtl. true
 
 sudo systemctl restart influxdb
 
-# kann übersprungen werden, wenn telegraf nicht genutzt wird, optional
+# kann Ã¼bersprungen werden, wenn telegraf nicht genutzt wird, optional
 sudo nano /etc/telegraf/telegraf.conf
 
-# Die folgenden Einträge in der Datei müssen angepasst werden:
+# Die folgenden EintrÃ¤ge in der Datei mÃ¼ssen angepasst werden:
 database = "telegraf" # required
 username = "telegraf" 
 password = "telegraf"
@@ -67,12 +67,13 @@ sudo systemctl start grafana-server
 
 sudo apt-get install python-influxdb
 
-# Datei anlegen
+# Datei bootlogger.py anlegen
+cd /boot
 sudo wget https://github.com/M1Nattrodt/Datenlogger/blob/master/bootlogger.py
 sudo chmod 755 /boot/bootlogger.py
 
 # Autostart Arduino Logger
-# zur Datei rc.local hinzufügen
+# zur Datei rc.local (for exit 0) hinzufÃ¼gen
 
 sudo nano /etc/rc.local
 
