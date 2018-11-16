@@ -69,7 +69,7 @@ sudo apt-get install python-influxdb
 
 # Datei bootlogger.py anlegen
 cd /boot
-sudo wget https://github.com/M1Nattrodt/Datenlogger/blob/master/bootlogger.py
+sudo wget -O bootlogger.py http://www.heizung-logger.de/bootlogger.txt
 sudo chmod 755 /boot/bootlogger.py
 
 # Autostart Arduino Logger
