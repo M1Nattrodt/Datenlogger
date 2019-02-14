@@ -42,7 +42,7 @@ class Bootlogger:
         return len(serial.tools.list_ports.comports())
 
     def isValidTemperature(self, line):
-        return re.match("^tempT[a-z][0-9] sensor [a-zA-Z0-9]{4} -?[0-9]{1,3}.[0-9]$", line)
+        return re.match("^tempT[a-z][0-9] sensor [a-zA-Z0-9]{4} -?[0-9]{1,4}(\.[0-9]+)$", line)
 
     def parseAndWriteToDB(self, temperature_string):
         wert = float(temperature_string.split(' ')[3])
