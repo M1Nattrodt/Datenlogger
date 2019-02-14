@@ -69,7 +69,7 @@ sudo chmod 755 /boot/bootlogger.py
 
 sudo nano /etc/rc.local
 
-	sleep 30 &&  /boot/bootlogger.py &
+	sleep 30 &&  python /boot/bootlogger.py &
 
 
 
