@@ -37,6 +37,8 @@ CREATE DATABASE "rasp4"
 # wählen und ihr solltet bei password ein sicheres Passwort vergeben.
 # beenden mit Exit
 
+exit
+
 sudo systemctl restart influxdb
 
 
@@ -82,3 +84,5 @@ sudo apt-get remove dphys-swapfile
 # nach dem Neustart sollte alles funktionieren
 sudo reboot
 
+# Evtl. Arduino installieren siehe https://www.arduino.cc
+sudo apt-get install arduino 
