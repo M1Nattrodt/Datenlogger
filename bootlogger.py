@@ -14,7 +14,7 @@ class Bootlogger:
     def __init__(self, database, name, password):
         self.current_amount_of_ports = 0
         self.arduino_ports = []
-        self.db = influxdb.InfluxDBClient('localhost', 8086, database, name, password)
+        self.db = influxdb.InfluxDBClient('localhost', 8086, database, password, database)
         print "database " + database + " is set up"
 
     def setSerialPorts(self):
