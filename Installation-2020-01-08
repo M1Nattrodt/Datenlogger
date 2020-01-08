@@ -68,9 +68,17 @@ sudo nano /etc/rc.local
 
 	sleep 30 &&  python /boot/bootlogger.py &
 
+# Influxdb schreibt sehr viel in die Datei
+# /var/log/syslog
+# wenn die Datei zu gross wird, dann macht
+# der Raspi oder die Sd-Karte schlapp
+# in der folgenden Datei können die Logeinstellungen
+# angepasst werden.
 
+sudo nano /etc/influxdb/influxdb.conf
 
 # Loggdateien (Linux) ausschalten wegen SD-Karte
+# Bei Anpassung der influxdb.conf die nächsten zwei Zeilen überspringen
 
 sudo service rsyslog stop
 sudo systemctl disable rsyslog
