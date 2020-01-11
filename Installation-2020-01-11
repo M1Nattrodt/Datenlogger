@@ -85,6 +85,8 @@ sudo systemctl disable rsyslog
 
 
 # Befhel, der die Lebensdauer von SD-Karten verlängern sollte:
+# Falls auf dem Raspberry noch andere Programme laufen
+# kann dies zu Instabilität führen; nicht getestet!!!!
 
 sudo swapoff --all
 sudo apt-get remove dphys-swapfile
