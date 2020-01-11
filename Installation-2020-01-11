@@ -102,5 +102,5 @@ sudo reboot
 
 cd Downloads/
 tar -xf arduino-1.8.10-linuxarm.tar.xz
-sudo mv arduino-1.8.10/opt
+sudo mv arduino-1.8.10 /opt
 sudo /opt/arduino-1.8.10/install.sh
