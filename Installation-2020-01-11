@@ -93,4 +93,12 @@ sudo apt-get remove dphys-swapfile
 sudo reboot
 
 # Evtl. Arduino installieren siehe https://www.arduino.cc
-sudo apt-get install arduino 
+# Software runterladen bei:
+# https://www.arduino.cc/en/Main/Software
+# linux arm 32 bit
+# evtl. Versionsnummer anpassen
+
+cd Downloads/
+tar -xf arduino-1.8.10-linuxarm.tar.xz
+sudo mv arduino-1.8.10/opt
+sudo /opt/arduino-1.8.10/install.sh
