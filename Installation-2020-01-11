@@ -1,7 +1,9 @@
 # 03.03.2020  Installationsanleitung Datenlogger
-# Image brennen auf SD-Karte (Win32 Disk Imager)
+# Image brennen auf SD-Karte (Win32 Disk Imager9
+# Sd-Karte empfohlen Scan Disk 16 GB
 # 2019-09-26-raspbian-buster-full.img (Raspbian Buster with desktop)
 # https://www.raspberrypi.org/downloads/raspbian/
+# Den Raspberry mit LAN-Kabel ans Internet anschliessen
 # Einstellungen anpassen, ssh Server aktivieren
 # in Konsole mit  hostname -I die ip nummer des RaspberryPi abfragen
 
@@ -12,7 +14,6 @@ sudo raspi-config
 
 # https://canox.net/2018/01/installation-von-grafana-influxdb-telegraf-auf-einem-raspberry-pi/
 curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-
 echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 
 sudo apt update
@@ -29,8 +30,6 @@ influx
 
 CREATE USER "admin" WITH PASSWORD 'admin' WITH ALL PRIVILEGES
 CREATE USER "rasp4" WITH PASSWORD 'rasp4' WITH ALL PRIVILEGES
-
-
 CREATE DATABASE "rasp4"
 
 # Statt admin könnt ihr auch einen anderen Benutzernamen
@@ -40,7 +39,6 @@ CREATE DATABASE "rasp4"
 exit
 
 sudo systemctl restart influxdb
-
 
 # Installation Grafana
 
@@ -53,20 +51,27 @@ sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 
 # Influx und Grafana ist nun installiert, Verbindung in Grafana anpassen
+# sudo apt-get install python-influxdb -> nicht mehr benötigt 01.2020
 
-sudo apt-get install python-influxdb
-
-# Datei bootlogger.py anlegen
-cd /boot
-sudo wget -O bootlogger.py http://www.heizung-logger.de/bootlogger.txt
-sudo chmod 755 /boot/bootlogger.py
+# Datei readUSB0.py anlegen
+mkdir /home/pi/logger
+cd /home/pi/logger
+sudo wget -O readUSB0.py http://www.heizung-logger.de/readUSB0.txt
+sudo wget -O readUSB1.py http://www.heizung-logger.de/readUSB1.txt
+sudo wget -O readUSB2.py http://www.heizung-logger.de/readUSB2.txt
+sudo chmod 755 *
 
 # Autostart Arduino Logger
 # zur Datei rc.local (for exit 0) hinzufügen
 
 sudo nano /etc/rc.local
 
-	sleep 30 &&  python /boot/bootlogger.py &
+# sleep 200 -> wenn das Programm gestartet wird, bevor
+# influxdb läuft kommt es zu einem Fehler und das Programm
+# bricht ab.
+sleep 200 &&  python /home/pi/logger/readUSB0.py &
+sleep 210 &&  python /home/pi/logger/readUSB1.py &
+sleep 220 &&  python /home/pi/logger/readUSB2.py &
 
 # Influxdb schreibt sehr viel in die Datei
 # /var/log/syslog
