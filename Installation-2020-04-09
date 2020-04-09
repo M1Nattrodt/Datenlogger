@@ -42,8 +42,8 @@ sudo systemctl restart influxdb
 
 # Installation Grafana
 
-wget https://dl.grafana.com/oss/release/grafana_6.5.2_armhf.deb
-sudo dpkg -i grafana_6.5.2_armhf.deb
+wget https://dl.grafana.com/oss/release/grafana_6.7.2_armhf.deb
+sudo dpkg -i grafana_6.7.2_armhf.deb
 
 sudo apt-get update
 
@@ -106,6 +106,6 @@ sudo reboot
 # evtl. Versionsnummer anpassen
 
 cd Downloads/
-tar -xf arduino-1.8.10-linuxarm.tar.xz
-sudo mv arduino-1.8.10 /opt
-sudo /opt/arduino-1.8.10/install.sh
+tar -xf arduino-1.8.12-linuxarm.tar.xz
+sudo mv arduino-1.8.12 /opt
+sudo /opt/arduino-1.8.12/install.sh
